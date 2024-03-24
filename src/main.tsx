@@ -5,11 +5,13 @@ import App from "./App.tsx";
 import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Root from "./routes/root.tsx";
+import ErrorPage from "./routes/error-page.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
+    errorElement: <ErrorPage />,
   },
 ]);
 

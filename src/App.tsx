@@ -7,14 +7,12 @@ import {
   NavbarItem,
   NavbarMenuToggle,
   NavbarMenu,
-  NavbarMenuItem,
-  Button,
   Card,
   CardHeader,
   CardBody,
   Image,
 } from "@nextui-org/react";
-import { Link, Element } from "react-scroll";
+import { Link } from "react-scroll";
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

@@ -2,7 +2,6 @@ import { LoaderFunctionArgs, useLoaderData } from "react-router-dom";
 import { getProjectById } from "../scripts/projects";
 import { Link, Navbar, NavbarContent } from "@nextui-org/react";
 import Markdown from "react-markdown";
-import rehypeHighlight from "rehype-highlight";
 import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight";
 import { dark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 // import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -35,9 +34,7 @@ export default function Project() {
       </Navbar>
       <div className="max-w-5xl mx-auto p-8">
         <h1 className="font-bold text-5xl py-8 ">{project.title}</h1>
-        {/* <p>{project.body}</p> */}
         <Markdown
-          //   rehypePlugins={[rehypeHighlight]}
           components={{
             h1: ({ node, ...props }) => (
               <h1 className="text-3xl font-bold py-8" {...props} />

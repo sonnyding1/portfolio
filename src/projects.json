@@ -2,7 +2,8 @@
   {
     "id": "interactive-math-web-app",
     "title": "Interative Math Web App",
-    "description": "This is a description of my project.",
+    "technologies": "Next.js, React.js, MongoDB",
+    "featured": true,
     "body": "\r\nThis is a math web app that allows you to do math calculations in the browser. It supports basic arithmetic operations, such as addition, subtraction, multiplication, and division. You can also perform more advanced operations, such as exponentiation, square roots, and trigonometric functions.\r\n\r\n# Features\r\n\r\n- Basic arithmetic operations\r\n- Advanced math functions\r\n- Interactive graphing\r\n- Customizable settings\r\n- Save and load calculations\r\n\r\n# Technologies Used\r\n\r\n- HTML\r\n- CSS\r\n- JavaScript\r\n- Math.js\r\n- Chart.js\r\n- LocalStorage\r\n\r\n# Implementations\r\n\r\n```javascript\r\nfunction add(a, b) {\r\n  return a + b;\r\n}\r\n\r\nfunction subtract(a, b) {\r\n  return a - b;\r\n}\r\n```\r\n\r\n## h2\r\n\r\n### h3\r\n"
   }
 ]

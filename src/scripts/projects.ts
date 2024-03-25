@@ -3,7 +3,8 @@ import projects from "../projects.json";
 interface Project {
   id: string;
   title: string;
-  description: string;
+  technologies: string;
+  featured: boolean;
   body: string;
 }
 

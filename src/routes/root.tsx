@@ -12,11 +12,19 @@ import {
   Image,
 } from "@nextui-org/react";
 import { Link } from "react-scroll";
+import { Link as RouterLink } from "react-router-dom";
+import {
+  getFeaturedProjects,
+  getNonFeaturedProjects,
+} from "../scripts/projects";
 
 function Root() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [navbarHeight, setNavbarHeight] = useState(0);
   const [activeSection, setActiveSection] = useState("");
+
+  const featuredProjects = getFeaturedProjects();
+  const nonFeaturedProjects = getNonFeaturedProjects();
 
   useEffect(() => {
     const navbarElement = document.getElementById("navbar");
@@ -113,7 +121,30 @@ function Root() {
             Featured
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            <Card className="py-4">
+            {featuredProjects.map((project) => (
+              <RouterLink to={`/projects/${project.id}`}>
+                <Card
+                  className="py-4 transform transition duration-500 ease-in-out hover:scale-105 cursor-pointer"
+                  key={project.id}
+                >
+                  <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
+                    <h4 className="font-bold text-large">{project.title}</h4>
+                    <small className="text-default-500">
+                      {project.technologies}
+                    </small>
+                  </CardHeader>
+                  <CardBody className="overflow-visible py-2">
+                    <Image
+                      alt="Card background"
+                      className="object-cover rounded-xl"
+                      src={project.og}
+                      width="100%"
+                    />
+                  </CardBody>
+                </Card>
+              </RouterLink>
+            ))}
+            {/* <Card className="py-4">
               <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
                 <h4 className="font-bold text-large">Math Mastery Web App</h4>
                 <small className="text-default-500">
@@ -160,7 +191,7 @@ function Root() {
                   width="100%"
                 />
               </CardBody>
-            </Card>
+            </Card> */}
           </div>
         </div>
         <div className="my-32">
@@ -168,7 +199,30 @@ function Root() {
             All
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            <Card className="py-4">
+            {nonFeaturedProjects.map((project) => (
+              <RouterLink to={`/projects/${project.id}`}>
+                <Card
+                  className="py-4 transform transition duration-500 ease-in-out hover:scale-105 cursor-pointer"
+                  key={project.id}
+                >
+                  <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
+                    <h4 className="font-bold text-large">{project.title}</h4>
+                    <small className="text-default-500">
+                      {project.technologies}
+                    </small>
+                  </CardHeader>
+                  <CardBody className="overflow-visible py-2">
+                    <Image
+                      alt="Card background"
+                      className="object-cover rounded-xl"
+                      src={project.og}
+                      width="100%"
+                    />
+                  </CardBody>
+                </Card>
+              </RouterLink>
+            ))}
+            {/* <Card className="py-4">
               <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
                 <h4 className="font-bold text-large">Math Mastery Web App</h4>
                 <small className="text-default-500">
@@ -231,7 +285,7 @@ function Root() {
                   width="100%"
                 />
               </CardBody>
-            </Card>
+            </Card> */}
           </div>
         </div>
       </div>

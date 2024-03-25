@@ -6,6 +6,7 @@ interface Project {
   technologies: string;
   featured: boolean;
   body: string;
+  og: string;
 }
 
 export function getProjectById(id: string): Project | undefined {
@@ -14,4 +15,12 @@ export function getProjectById(id: string): Project | undefined {
     throw new Error(`No project found with id ${id}`);
   }
   return project;
+}
+
+export function getFeaturedProjects(): Project[] {
+  return projects.filter((project) => project.featured);
+}
+
+export function getNonFeaturedProjects(): Project[] {
+  return projects.filter((project) => !project.featured);
 }

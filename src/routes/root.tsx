@@ -98,7 +98,7 @@ function Root() {
       </Navbar>
       <div className="max-w-5xl mx-auto p-8">
         <div className="my-32">
-          <p className="font-bold text-5xl py-8 a" id="about">
+          <p className="font-bold text-5xl py-8" id="about">
             About
           </p>
           <p className="text-xl pt-16">

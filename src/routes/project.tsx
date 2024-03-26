@@ -28,7 +28,7 @@ export default function Project() {
   return (
     <div>
       <Navbar id="navbar" position="static">
-        <NavbarContent className="hidden sm:flex gap-4" justify="center">
+        <NavbarContent className="gap-4" justify="center">
           <Link href="/">Back</Link>
         </NavbarContent>
       </Navbar>

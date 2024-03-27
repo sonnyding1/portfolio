@@ -14,4 +14,5 @@ content:
       - { name: id, label: ID, type: string }
       - { name: featured, label: Featured, type: boolean }
       - { name: og, label: OG Image, type: image }
+      - { name: date, label: Date, type: date }
       - { name: body, label: Body, type: rich-text }

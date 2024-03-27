@@ -3,15 +3,13 @@ import { getProjectById } from "../scripts/projects";
 import { Link, Navbar, NavbarContent } from "@nextui-org/react";
 import Markdown from "react-markdown";
 import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight";
-import { dark } from "react-syntax-highlighter/dist/esm/styles/hljs";
-// import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { dracula } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 interface Params {
   id: string;
 }
 
 export async function loader({ params }: LoaderFunctionArgs<Params>) {
-  console.log(params.projectId);
   const { title, body } = (await getProjectById(params.projectId || "")) || {
     title: "",
     body: "",
@@ -36,6 +34,7 @@ export default function Project() {
         <h1 className="font-bold text-5xl py-8 ">{project.title}</h1>
         <Markdown
           components={{
+            p: ({ node, ...props }) => <p className="py-4" {...props} />,
             h1: ({ node, ...props }) => (
               <h1 className="text-3xl font-bold py-8" {...props} />
             ),
@@ -55,14 +54,15 @@ export default function Project() {
             code(props) {
               const { children, className, node, ...rest } = props;
               const match = /language-(\w+)/.exec(className || "");
+              console.log(match);
               return match ? (
                 <SyntaxHighlighter
                   {...rest}
                   PreTag="div"
                   children={String(children).replace(/\n$/, "")}
                   language={match[1]}
-                  style={dark}
-                  ref={null} // Add a null ref to fix the type error
+                  style={dracula}
+                  ref={null}
                 />
               ) : (
                 <code {...rest} className={className}>

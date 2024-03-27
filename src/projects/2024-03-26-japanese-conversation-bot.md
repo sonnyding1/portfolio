@@ -3,7 +3,7 @@ title: Japanese Conversation Bot
 technologies: Django, JavaScript, Docker
 id: japanese-conversation-bot
 featured: true
-og: /public/PixPin_2024-03-26_17-50-42.png
+og: /public/japanese-conversation-bot.png
 ---
 SpeechCloud API too expensive, 0.01 Euro per word/character.
 Coqui seems doable, but currently stuck with some character parsing things.

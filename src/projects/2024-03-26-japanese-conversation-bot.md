@@ -15,134 +15,29 @@ The ideal flow of the project is: user presses "speak" button and speaks in Japa
 
 This project uses Flask and HTML, Tailwind CSS, JavaScript.
 
-## Choosing good Text to Speech API
+## Capture User Audio
 
-SpeechCloud API too expensive, 0.01 Euro per word/character. Coqui seems doable, but currently stuck with some character parsing things. Voicevox proves to be very useful. I downloaded locally, which also started a local at the same time. I wrote a script that performs audio query and synthesize the query into audio file. I wish to parse the returned json from `get_speakers()` method to have a more clear manual on speaker selection.
-
-MediaRecorder API is such a pain in the ass, took me 5 hours and I didn't get shit.
-
-## Web App
-
-### Flask
-
-### Prototype with Record/Stop button
-
-The first prototype uses a button to record/stop the audio.
-
-`app.py`
+A `POST` request is sent from my web app's root route to `/transcribe`. In there, I captured a blob of audio, saved it, and sent it to Whisper via `openai`, a Python wrapper of the OpenAI API.
 
 ```python
-@app.route('/process', methods=['POST'])
-def process():
-    # remove older output.wav, if possible
-    if (os.path.exists('static/output.wav')):
-        os.remove('static/output.wav')
-
-    # get the user input
-    userInput = request.get_json()['input']
-
-    # generate the audio output file
-    outputText = gpt.generate_response(userInput)
-    tts.text_to_speech(23, outputText, "static/output.wav")
-
-    # Wait for the audio file to be generated
-    while not os.path.exists('static/output.wav'):
-        time.sleep(1)
-
-    # return the function output as a JSON object
-    return jsonify({'output': outputText})
-
-@app.route('/wave')
-def get_wave():
-    return send_from_directory('static', 'output.wav')
+blob = request.files['blob'].read()
+with open('blob.wav', 'wb') as f:
+    f.write(blob)
+audio_file = open('blob.wav', "rb")
+openai.api_key = config.OPENAI_API_KEY
+transcript = openai.Audio.transcribe("whisper-1", audio_file)["text"]
+return jsonify({'output': transcript})
 ```
 
-`app.js`
+## Choosing good Text to Speech API
 
-```js
-window.addEventListener("load", function () {
-  // get stuff from DOM
-  record = document.getElementById("record");
-  submit = document.getElementById("submit");
-  messageInput = document.getElementById("message-input");
-  chatBox = document.getElementById("chat-box");
+I have actually compared different TTS options available to me.
 
-  // create a SpeechRecognition object
-  SpeechRecognition =
-    window.SpeechRecognition || window.webkitSpeechRecognition;
-  const recognition = new SpeechRecognition();
-
-  // set the language to Japanese
-  recognition.lang = "ja-JP";
-  recognition.continuous = true;
-
-  // add event listener to the record button
-  record.addEventListener("click", () => {
-    console.log("reached!");
-    if (record.value === "Record") {
-      // start recording
-      console.log("start recording");
-      recognition.start();
-      record.value = "Stop";
-    } else {
-      // stop recording
-      console.log("stop recording");
-      recognition.stop();
-      record.value = "Record";
-    }
-  });
-
-  // add event listener to the recognition object
-  recognition.addEventListener("result", event => {
-    // get the converted text
-    const text = event.results[0][0].transcript;
-
-    // display the text on the text field
-    messageInput.value = text;
-  });
-
-  // add event listener to the submit button
-  submit.addEventListener("click", () => {
-    // get the user input text
-    const userInput = messageInput.value;
-
-    // send the user input to the Python function via AJAX
-    const xhr = new XMLHttpRequest();
-    xhr.open("POST", "/process");
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.onload = () => {
-      // get the function output
-      const functionOutput = JSON.parse(xhr.responseText).output;
-
-      // display the user input and function output on the web app
-      // const chatBox = document.querySelector('#chat-box');
-      chatBox.innerHTML =
-        chatBox.innerHTML +
-        `<p>User: ${userInput}</p><p>GPT: ${functionOutput}</p>`;
-
-      // clear the text field
-      messageInput.value = "";
-
-      // fetch audio
-      audio = this.document.getElementById("audio");
-      audio.src = "/wave?" + new Date().getTime(); // to prevent cache
-      audio.load();
-      audio.play();
-    };
-    xhr.send(JSON.stringify({ input: userInput }));
-  });
-});
-```
-
-`fetch` is newer than `XMLHttpRequest`, and better.
-
-`response => response.json()` and `response => {response.json();}` are different. Took me 2 hours to realize that.
-
-bootstrap icon is a good icon library
+SpeechCloud API too expensive, 0.01 Euro per word/character. Coqui seems doable, but currently stuck with some character parsing things. Voicevox proves to be very useful. I downloaded locally, which also started a local at the same time. I wrote a script that performs audio query and synthesize the query into audio file. I was also able to parse the returned json from `get_speakers()` method to have a more clear manual on speaker selection.
 
 ## VoiceVox in Docker
 
-Thus far, I've been using VoiceVox's server started locally by actually opening the software. To make it simpler for the user, I used the following code snippet to run a Docker container version of VoiceVox server.
+At the beginning, I made use of VoiceVox by actually downloading the software and opening it locally. To make it simpler for the user, I used the following code snippet to run a Docker container version of VoiceVox server.
 
 ```python
 import docker
@@ -173,3 +68,15 @@ def OnExitApp():
 
 atexit.register(OnExitApp)
 ```
+
+## UI
+
+The UI looks like this:
+
+![](/japanese-conversation-bot.png)
+
+Before that, I have also made a prototype using Gradio.
+
+## Closing Notes
+
+Going further,

@@ -5,11 +5,11 @@ id: japanese-conversation-bot
 featured: true
 og: /japanese-conversation-bot.png
 ---
-This is a project that I worked on when OpenAI API first became publicly available. The aim of the project is to have a Japanese tutor who can converse with the user in Japanese, and correct the user's errors, encourage the user to become more proficient in speaking Japanese as they converse with the chat bot.
+This is a project that I worked on when OpenAI API first became publicly available. The aim of the project is to have a Japanese tutor who can converse with the user in Japanese, correct the user's errors, and encourage the user to become more proficient in speaking Japanese as they converse with the chatbot.
 
 ## Overview
 
-The ideal flow of the project is: user presses "speak" button and speaks in Japanese -> Whisper transcribes text, transcribed text appears in text area, users may manually correct any mistakes by typing -> submit user message -> user message sent to OpenAI API, the API returns a response -> response as a piece of text is displayed on the web app -> response as a piece of text is sent to VoiceVox, which performs text to speech.
+The ideal flow of the project is: user presses the "speak" button and speaks in Japanese -> Whisper transcribes text, transcribed text appears in the text area, users may manually correct any mistakes by typing -> submit user message -> user message sent to OpenAI API, the API returns a response -> response as a piece of text is displayed on the web app -> response as a piece of text is sent to VoiceVox, which performs text to speech.
 
 ![](/japanese-conversation-bot/flowchart.png)
 
@@ -33,11 +33,11 @@ return jsonify({'output': transcript})
 
 I have actually compared different TTS options available to me.
 
-SpeechCloud API too expensive, 0.01 Euro per word/character. Coqui seems doable, but currently stuck with some character parsing things. Voicevox proves to be very useful. I downloaded locally, which also started a local at the same time. I wrote a script that performs audio query and synthesize the query into audio file. I was also able to parse the returned json from `get_speakers()` method to have a more clear manual on speaker selection.
+SpeechCloud API was too expensive, it was priced at around 0.01 Euro per word/character. Coqui seems doable, but currently stuck with some character parsing issues. Voicevox proves to be very useful. I downloaded it locally, which also started a local at the same time. I wrote a script that performs audio query and synthesizes the query into an audio file. I was also able to parse the returned JSON from get_speakers() method to have a clearer manual on speaker selection.
 
 ## VoiceVox in Docker
 
-At the beginning, I made use of VoiceVox by actually downloading the software and opening it locally. To make it simpler for the user, I used the following code snippet to run a Docker container version of VoiceVox server.
+At the beginning, I made use of VoiceVox by actually downloading the software and opening it locally. To make it simpler for the user, I used the following code snippet to run a Docker container version of the VoiceVox server.
 
 ```python
 import docker
@@ -60,7 +60,7 @@ container = client.containers.run(
 print(container.logs(follow=True))
 ```
 
-Also, stop the Docker container that contains VoiceVox image on exit using the `atexit` library.
+Also, stop the Docker container that contains the VoiceVox image on exit using the atexit library.
 
 ```python
 def OnExitApp():
@@ -77,6 +77,8 @@ The UI looks like this:
 
 Before that, I have also made a prototype using Gradio.
 
+![](/japanese-conversation-bot/gradio.png)
+
 ## Closing Notes
 
-Going further,
+Going further, I may be able to improve the UI, incorporate more features such as displaying Furigana, bookmarking good conversations, and so on. Overall, it was very fun working on this project. I got to practice a lot about how to leverage existing solutions to serve my own purposes.

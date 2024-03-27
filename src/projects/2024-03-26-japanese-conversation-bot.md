@@ -81,4 +81,4 @@ Before that, I have also made a prototype using Gradio.
 
 ## Closing Notes
 
-Going further, I may be able to improve the UI, incorporate more features such as displaying Furigana, bookmarking good conversations, and so on. Overall, it was very fun working on this project. I got to practice a lot about how to leverage existing solutions to serve my own purposes.
+Going further, I may be able to improve the UI, incorporate more features such as displaying Furigana, bookmarking good conversations, and so on. Overall, it was very fun working on this project. I got to practice a lot about how to leverage existing solutions to build something that I wish existed.

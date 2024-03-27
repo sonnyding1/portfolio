@@ -5,6 +5,7 @@ id: chatgpt-cli
 featured: false
 og: /PixPin_2024-03-27_13-30-35.png
 ---
+
 Recently, OpenAI released API for ChatGPT, I took advantage of that, and did a little test run. This is going to be a fairly short blog post, all I've done is to test the new API.
 
 ## API
@@ -27,7 +28,7 @@ openai.ChatCompletion.create(
 
 Here, `gpt-3.5-turbo` is ChatGPT. `messages` stores the whole conversation, including the initial prompt in the role of `system`, user's questions in the role of `user`, and ChatGPT's response in the role of `assistant`. The `create` function returns a response like this:
 
-```
+```txt
 {
  'id': 'chatcmpl-6p9XYPYSTTRi0xEviKjjilqrWU2Ve',
  'object': 'chat.completion',

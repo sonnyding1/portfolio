@@ -1,6 +1,6 @@
 import { LoaderFunctionArgs, useLoaderData } from "react-router-dom";
 import { getProjectById } from "../scripts/projects";
-import { Link, Navbar, NavbarContent } from "@nextui-org/react";
+import { Link, Navbar, NavbarContent, divider } from "@nextui-org/react";
 import Markdown from "react-markdown";
 import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight";
 import { dracula } from "react-syntax-highlighter/dist/esm/styles/hljs";
@@ -62,9 +62,10 @@ export default function Project() {
                   language={match[1]}
                   style={dracula}
                   ref={null}
+                  className="rounded-md p-4 overflow-x-scroll"
                 />
               ) : (
-                <code {...rest} className={className}>
+                <code {...rest} className="bg-gray-200 rounded-sm px-1">
                   {children}
                 </code>
               );

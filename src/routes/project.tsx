@@ -54,7 +54,6 @@ export default function Project() {
             code(props) {
               const { children, className, node, ...rest } = props;
               const match = /language-(\w+)/.exec(className || "");
-              console.log(match);
               return match ? (
                 <SyntaxHighlighter
                   {...rest}

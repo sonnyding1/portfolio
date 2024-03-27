@@ -5,9 +5,15 @@ id: japanese-conversation-bot
 featured: true
 og: /japanese-conversation-bot.png
 ---
-SpeechCloud API too expensive, 0.01 Euro per word/character.
-Coqui seems doable, but currently stuck with some character parsing things.
-Voicevox proves to be very useful. I downloaded locally, which also started a local at the same time. I wrote a script that performs audio query and synthesize the query into audio file. I wish to parse the returned json from `get_speakers()` method to have a more clear manual on speaker selection.
+This is a project that I worked on when OpenAI API first became publicly available. The aim of the project is to have a Japanese tutor who can converse with the user in Japanese, and correct the user's errors, encourage the user to become more proficient in speaking Japanese as they converse with the chat bot.
+
+## Overview
+
+The ideal flow of the project is: user presses "speak" button and speaks in Japanese -> Whisper transcribes text, transcribed text appears in text area, users may manually correct any mistakes by typing -> submit user message -> user message sent to OpenAI API, the API returns a response -> response as a piece of text is displayed on the web app -> response as a piece of text is sent to VoiceVox, which performs text to speech.
+
+This project uses Flask and HTML, Tailwind CSS, JavaScript.
+
+SpeechCloud API too expensive, 0.01 Euro per word/character. Coqui seems doable, but currently stuck with some character parsing things. Voicevox proves to be very useful. I downloaded locally, which also started a local at the same time. I wrote a script that performs audio query and synthesize the query into audio file. I wish to parse the returned json from `get_speakers()` method to have a more clear manual on speaker selection.
 
 MediaRecorder API is such a pain in the ass, took me 5 hours and I didn't get shit.
 

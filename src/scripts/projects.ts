@@ -7,6 +7,7 @@ interface Project {
   featured: boolean;
   body: string;
   og: string;
+  date: string;
 }
 
 export function getProjectById(id: string): Project | undefined {
@@ -18,9 +19,13 @@ export function getProjectById(id: string): Project | undefined {
 }
 
 export function getFeaturedProjects(): Project[] {
-  return projects.filter((project) => project.featured);
+  return projects
+    .filter((project) => project.featured)
+    .sort((a, b) => b.date.localeCompare(a.date));
 }
 
 export function getNonFeaturedProjects(): Project[] {
-  return projects.filter((project) => !project.featured);
+  return projects
+    .filter((project) => !project.featured)
+    .sort((a, b) => b.date.localeCompare(a.date));
 }

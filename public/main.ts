@@ -19,10 +19,10 @@ const projects = filenames.map((filename) => {
   // Parse the frontmatter of the markdown file
   // const { data } = matter(fileContents);
   const { data, content } = matter(fileContents);
-  const { id, title, technologies, featured, og } = data;
+  const { id, title, technologies, featured, og, date } = data;
 
   // Return the parsed data
-  return { id, title, technologies, featured, og, body: content };
+  return { id, title, technologies, featured, og, date, body: content };
 });
 
 // Define the output path

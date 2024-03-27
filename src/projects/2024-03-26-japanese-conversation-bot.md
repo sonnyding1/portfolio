@@ -4,7 +4,9 @@ technologies: Django, JavaScript, Docker
 id: japanese-conversation-bot
 featured: true
 og: /japanese-conversation-bot.png
+date: 2023-04-01
 ---
+
 This is a project that I worked on when OpenAI API first became publicly available. The aim of the project is to have a Japanese tutor who can converse with the user in Japanese, correct the user's errors, and encourage the user to become more proficient in speaking Japanese as they converse with the chatbot.
 
 ## Overview

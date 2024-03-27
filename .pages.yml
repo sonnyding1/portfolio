@@ -7,7 +7,8 @@ content:
     type: collection
     path: src/projects
     view:
-      fields: [ title ]
+      fields: [ title, date ]
+      sort: [date]
     fields:
       - { name: title, label: Title, type: string }
       - { name: technologies, label: Technologies, type: string }

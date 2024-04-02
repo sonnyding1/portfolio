@@ -9,7 +9,7 @@ import Project, { loader as projectLoader } from "./routes/project.tsx";
 import posthog from "posthog-js";
 import { PostHogProvider } from "posthog-js/react";
 
-posthog.init(process.env.REACT_APP_POSTHOG_API_KEY!, {
+posthog.init("phc_npn686JeeLdaGoCHOdFvqNb289AFZk3W3T11ohrLgb5", {
   api_host: "https://app.posthog.com",
 });
 

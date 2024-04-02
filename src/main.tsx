@@ -6,6 +6,12 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Root from "./routes/root.tsx";
 import ErrorPage from "./routes/error-page.tsx";
 import Project, { loader as projectLoader } from "./routes/project.tsx";
+import posthog from "posthog-js";
+
+const posthogApiKey = process.env.REACT_APP_POSTHOG_API_KEY || ""; // Set a default value if the environment variable is undefined
+posthog.init(posthogApiKey, {
+  api_host: "https://app.posthog.com",
+});
 
 const router = createBrowserRouter([
   {

@@ -6,6 +6,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Root from "./routes/root.tsx";
 import ErrorPage from "./routes/error-page.tsx";
 import Project, { loader as projectLoader } from "./routes/project.tsx";
+import { Analytics } from "@vercel/analytics/react";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <NextUIProvider>
       {/* <App /> */}
+      <Analytics />
       <RouterProvider router={router} />
     </NextUIProvider>
   </React.StrictMode>

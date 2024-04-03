@@ -8,6 +8,13 @@ import ErrorPage from "./routes/error-page.tsx";
 import Project, { loader as projectLoader } from "./routes/project.tsx";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
+import mixpanel from "mixpanel-browser";
+
+mixpanel.init("YOUR_TOKEN", {
+  debug: true,
+  track_pageview: true,
+  persistence: "localStorage",
+});
 
 const router = createBrowserRouter([
   {

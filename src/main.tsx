@@ -10,8 +10,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import mixpanel from "mixpanel-browser";
 
-mixpanel.init("YOUR_TOKEN", {
-  debug: true,
+mixpanel.init("e009bb1b3f206a98da6a7784a5495e76", {
   track_pageview: true,
   ignore_dnt: true,
   persistence: "localStorage",

@@ -4,7 +4,10 @@ const PlausibleAnalytics = () => {
   useEffect(() => {
     const script = document.createElement("script");
     script.defer = true;
-    script.setAttribute("data-domain", "sonnyding.com");
+    script.setAttribute(
+      "data-domain",
+      "https://sonnyding-portfoilio.vercel.app/"
+    );
     script.src = "https://plausible.io/js/script.js";
     document.head.appendChild(script);
 

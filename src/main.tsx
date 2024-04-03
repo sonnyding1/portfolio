@@ -13,6 +13,7 @@ import mixpanel from "mixpanel-browser";
 mixpanel.init("YOUR_TOKEN", {
   debug: true,
   track_pageview: true,
+  ignore_dnt: true,
   persistence: "localStorage",
 });
 

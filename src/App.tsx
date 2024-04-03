@@ -55,7 +55,6 @@ function App() {
 
   return (
     <>
-      <PlausibleAnalytics />
       <Navbar onMenuOpenChange={setIsMenuOpen} id="navbar">
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}

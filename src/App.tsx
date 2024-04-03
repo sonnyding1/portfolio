@@ -13,6 +13,7 @@ import {
   Image,
 } from "@nextui-org/react";
 import { Link } from "react-scroll";
+import PlausibleAnalytics from "./plausible-analytics";
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -54,6 +55,7 @@ function App() {
 
   return (
     <>
+      <PlausibleAnalytics />
       <Navbar onMenuOpenChange={setIsMenuOpen} id="navbar">
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}

@@ -9,7 +9,6 @@ import Project, { loader as projectLoader } from "./routes/project.tsx";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import mixpanel from "mixpanel-browser";
-import { PostHogProvider } from "posthog-js/react";
 
 mixpanel.init("e009bb1b3f206a98da6a7784a5495e76", {
   track_pageview: true,
@@ -33,16 +32,11 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <PostHogProvider
-      apiKey="phc_npn686JeeLdaGoCHOdFvqNb289AFZk3W3T11ohrLgb5"
-      options={{ api_host: "https://app.posthog.com" }}
-    >
-      <NextUIProvider>
-        {/* <App /> */}
-        <RouterProvider router={router} />
-        <Analytics />
-        <SpeedInsights />
-      </NextUIProvider>
-    </PostHogProvider>
+    <NextUIProvider>
+      {/* <App /> */}
+      <RouterProvider router={router} />
+      <Analytics />
+      <SpeedInsights />
+    </NextUIProvider>
   </React.StrictMode>
 );

@@ -13,7 +13,6 @@ import {
   Image,
 } from "@nextui-org/react";
 import { Link } from "react-scroll";
-import PlausibleAnalytics from "./plausible-analytics";
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

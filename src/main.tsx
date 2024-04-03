@@ -14,6 +14,7 @@ import posthog from "posthog-js";
 posthog.init("phc_npn686JeeLdaGoCHOdFvqNb289AFZk3W3T11ohrLgb5", {
   api_host: "https://us.posthog.com",
 });
+posthog.capture("$pageview");
 
 mixpanel.init("e009bb1b3f206a98da6a7784a5495e76", {
   track_pageview: true,

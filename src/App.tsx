@@ -13,9 +13,6 @@ import {
   Image,
 } from "@nextui-org/react";
 import { Link } from "react-scroll";
-import ReactGA from "react-ga4";
-
-ReactGA.initialize("G-12ERTDWKXD");
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

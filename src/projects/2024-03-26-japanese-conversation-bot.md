@@ -3,17 +3,16 @@ title: Japanese Conversation Bot
 technologies: Django, JavaScript, Docker
 id: japanese-conversation-bot
 featured: true
-og: /japanese-conversation-bot.png
+og: https://na-406607901.imgix.net/japanese-conversation-bot/japanese-conversation-bot.png
 date: 2023-04-01
 ---
-
 This is a project that I worked on when OpenAI API first became publicly available. The aim of the project is to have a Japanese tutor who can converse with the user in Japanese, correct the user's errors, and encourage the user to become more proficient in speaking Japanese as they converse with the chatbot.
 
 ## Overview
 
 The ideal flow of the project is: user presses the "speak" button and speaks in Japanese -> Whisper transcribes text, transcribed text appears in the text area, users may manually correct any mistakes by typing -> submit user message -> user message sent to OpenAI API, the API returns a response -> response as a piece of text is displayed on the web app -> response as a piece of text is sent to VoiceVox, which performs text to speech.
 
-![](/japanese-conversation-bot/flowchart.png)
+![](https://na-406607901.imgix.net/japanese-conversation-bot/flowchart.png)
 
 This project uses Flask and HTML, Tailwind CSS, JavaScript.
 
@@ -75,11 +74,11 @@ atexit.register(OnExitApp)
 
 The UI looks like this:
 
-![](/japanese-conversation-bot.png)
+![](https://na-406607901.imgix.net/japanese-conversation-bot/japanese-conversation-bot.png)
 
 Before that, I have also made a prototype using Gradio.
 
-![](/japanese-conversation-bot/gradio.png)
+![](https://na-406607901.imgix.net/japanese-conversation-bot/gradio.png)
 
 ## Closing Notes
 

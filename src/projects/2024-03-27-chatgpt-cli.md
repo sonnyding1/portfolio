@@ -107,7 +107,7 @@ python "C:\path\to\my\script.py" %*
 
 ## Demo
 
-![img1](https://i3.lensdump.com/i/TBTjCq.png)
+![img1](https://na-406607901.imgix.net/chatgpt-cli/chatgpt-cli.png)
 
 ![img2](https://i1.lensdump.com/i/TBTWhD.png)
 

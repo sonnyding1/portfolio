@@ -6,9 +6,9 @@ featured: false
 og: /PixPin_2024-03-27_13-30-35.png
 date: 2024-04-03
 ---
-I built an HTTP server using Python. I followed this project on [Codecrafters](https://app.codecrafters.io), which is a great platform for implementing things on your own. Below are the specific steps taken to build a basic server.  
+I built an HTTP server using Python. I followed this project on [Codecrafters](https://app.codecrafters.io), which is a great platform for implementing things on your own. Below are the specific steps taken to build a basic server.
 
-## Bind to a port**
+## Bind to a port
 
 We use `socket` to spin up a server.
 
@@ -26,17 +26,16 @@ For any request, respond with `HTTP/1.1 200 OK\r\n\r\n`, which is the **HTTP sta
 connection, client = server_socket.accept()  # wait for client
 
 with connection:
-	input = connection.recv(1024)
-	connection.sendall(b"HTTP/1.1 200 OK\r\n\r\n")
+    input = connection.recv(1024)
+    connection.sendall(b"HTTP/1.1 200 OK\r\n\r\n")
 server_socket.close()
 ```
-
 
 ## Respond with 404
 
 Now we need to actually look at the content of the user request:
 
-```
+```txt
 GET /index.html HTTP/1.1
 Host: localhost:4221
 User-Agent: curl/7.64.1
@@ -69,7 +68,7 @@ def handle_request(input: bytes) -> bytes:
 
 Now, a user request may look like:
 
-```
+```txt
 GET /echo/abc HTTP/1.1
 Host: localhost:4221
 User-Agent: curl/7.64.1
@@ -77,7 +76,7 @@ User-Agent: curl/7.64.1
 
 And our response should be:
 
-```
+```txt
 HTTP/1.1 200 OK
 Content-Type: text/plain
 Content-Length: 3
@@ -123,13 +122,13 @@ def handle_request(input: bytes) -> bytes:
 
 Now, if `/user-agent`, our response should be the `User-Agent`'s value.
 
-```
+```txt
 GET /user-agent HTTP/1.1
 Host: localhost:4221
 User-Agent: curl/7.64.1
 ```
 
-```
+```txt
 HTTP/1.1 200 OK
 Content-Type: text/plain
 Content-Length: 11
@@ -141,12 +140,12 @@ Simply add code to handle this request:
 
 ```python
 elif len(path) >= 11 and path[:11] == "/user-agent":
-	body = input[2].split(": ")[1]
-	output.append("HTTP/1.1 200 OK")
-	output.append("Content-Type: text/plain")
-	output.append(f"Content-Length: {len(body)}")
-	output.append("")
-	output.append(body)
+    body = input[2].split(": ")[1]
+    output.append("HTTP/1.1 200 OK")
+    output.append("Content-Type: text/plain")
+    output.append(f"Content-Length: {len(body)}")
+    output.append("")
+    output.append(body)
 ```
 
 ## Concurrent connections
@@ -177,7 +176,7 @@ def main():
 
 Our server should also accept an argument,
 
-```
+```txt
 ./your_server.sh --directory <directory>
 ```
 
@@ -228,4 +227,3 @@ elif method == "POST" and len(path) >= 6 and path[:6] == "/files":
 ## Conclusion
 
 Now that the server is capable of handling various `GET` requests and `POST` requests, we can say that it is actually a complete server. In this project, I got to practice parsing different parts of HTTP requests, and return specific responses. If you'd like to view my complete code, please check out my [repo](https://github.com/sonnyding1/sonnyding1-codecrafters-http-server-python), thanks!
-

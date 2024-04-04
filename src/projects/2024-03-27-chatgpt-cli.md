@@ -3,10 +3,9 @@ title: ChatGPT cli
 technologies: Python
 id: chatgpt-cli
 featured: false
-og: /PixPin_2024-03-27_13-30-35.png
+og: https://na-406607901.imgix.net/chatgpt-cli/chatgpt-cli.png
 date: 2023-03-01
 ---
-
 Recently, OpenAI released API for ChatGPT, I took advantage of that, and did a little test run. This is going to be a fairly short blog post, all I've done is to test the new API.
 
 ## API

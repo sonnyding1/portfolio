@@ -3,7 +3,7 @@ title: HTTP Server
 technologies: Python
 id: http-server
 featured: false
-og: /PixPin_2024-03-27_13-30-35.png
+og: https://na-406607901.imgix.net/http-server/http-server-python.png
 date: 2024-04-03
 ---
 I built an HTTP server using Python. I followed this project on [Codecrafters](https://app.codecrafters.io), which is a great platform for implementing things on your own. Below are the specific steps taken to build a basic server.

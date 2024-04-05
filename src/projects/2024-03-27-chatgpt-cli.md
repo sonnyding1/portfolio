@@ -109,9 +109,9 @@ python "C:\path\to\my\script.py" %*
 
 ![img1](https://na-406607901.imgix.net/chatgpt-cli/chatgpt-cli.png)
 
-![img2](https://i1.lensdump.com/i/TBTWhD.png)
+![img2](https://na-406607901.imgix.net/chatgpt-cli/demo-1.png)
 
-![img3](https://i.lensdump.com/i/TBTAY0.png)
+![img3](https://na-406607901.imgix.net/chatgpt-cli/demo-2.png)
 
 ## Conclusion
 

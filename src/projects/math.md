@@ -18,9 +18,15 @@ My interactive math web app has the following features:
 
 This project is a fullstack project, I mainly used Next.js. For the UI, I used Tailwind CSS and ShadCN UI. For the login functionality, instead of implementing login and auth functionalities on my own, I used a third party service called [Clerk](https://clerk.com/). I did use MongoDB for storing users' information such as number of problems solved, experience, and so on. To interact with MongoDB, I used an ORM called Prisma.
 
+## Structure
+
+For each problem page (Addition, Multiplication, Factorization), there is a corresponding API endpoint which is in charge of generating math problems, validating user answers.
+
+As for the user's experience points, levels, and number of problems solved, we make request to an API endpoint in the backend, which then makes request to MongoDB. We have to consider 2 different situations: when the user is logged in and when the user is not logged in. If the user 
+
 ## Rendering LaTeX
 
-I used MathJax for rendering math equations into LaTeX forms. Specifically, I included MathJax script in root level `layout.tsx`:
+I used MathJax for rendering math equations into LaTeX forms. Specifically, I included MathJax script in root level `layout.tsx`, so now every math block may be rendered as LaTeX math block:
 
 ```tsx
 <head>
@@ -28,7 +34,11 @@ I used MathJax for rendering math equations into LaTeX forms. Specifically, I in
 </head>
 ```
 
-And then, in the components that require LaTeX render, I need to apply typesetting after MathJax is loaded:
+## Unexpected pain: math input field
+
+Now that I have a system that can generate random math problems, I need to work on the input field. If the problem itself is rendered using LaTeX, of course I would also like the user input field to render LaTeX as well. 
+
+But how to accomplish this functionality? I tried to create a preview area, using MathJax to re-render the preview area every time user inputs new characters, but it was not possible. I attempted this:
 
 ```tsx
 const typeset = (selector: () => HTMLElement) => {
@@ -52,8 +62,16 @@ useEffect(() => {
 }, [problem, answer]);
 ```
 
-## Unexpected pain: math input field
+But it was not successful. Then, I tried searching for existing packages that would make good math input fields, and I found [MathLive](https://www.npmjs.com/package/mathlive), just what I needed. I was able to use it by attaching a `Script`, and then use it as such:
 
-Now that I have a system that can generate random math problems, I need to work on the input field. If the problem itself is rendered using LaTeX, of course I would also like the user input field to render LaTeX as well. 
+```tsx
+<math-field
+  id='answer'
+  onInput={(e: React.ChangeEvent<HTMLInputElement> ) => {
+    setUserAnswer(e.target.value);
+  }}
+>
+  {userAnswer}
+</math-field>
+```
 
-But how to accomplish this functionality? 

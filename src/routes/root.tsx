@@ -17,6 +17,8 @@ import {
   getFeaturedProjects,
   getNonFeaturedProjects,
 } from "../scripts/projects";
+import { Canvas, useFrame } from "@react-three/fiber";
+import Fox from "../Fox";
 
 function Root() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -61,6 +63,11 @@ function Root() {
 
   return (
     <>
+      <div className="fixed top-0 left-0 w-screen h-screen -z-10">
+        <Canvas>
+          <Fox />
+        </Canvas>
+      </div>
       <Navbar onMenuOpenChange={setIsMenuOpen} id="navbar">
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -141,54 +148,6 @@ function Root() {
                 </Card>
               </RouterLink>
             ))}
-            {/* <Card className="py-4">
-              <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-                <h4 className="font-bold text-large">Math Mastery Web App</h4>
-                <small className="text-default-500">
-                  Next.js, React.js, MongoDB
-                </small>
-              </CardHeader>
-              <CardBody className="overflow-visible py-2">
-                <Image
-                  alt="Card background"
-                  className="object-cover rounded-xl"
-                  src="/math-webapp.png"
-                  width="100%"
-                />
-              </CardBody>
-            </Card>
-            <Card className="py-4">
-              <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-                <h4 className="font-bold text-large">Math Mastery Web App</h4>
-                <small className="text-default-500">
-                  Next.js, React.js, MongoDB
-                </small>
-              </CardHeader>
-              <CardBody className="overflow-visible py-2">
-                <Image
-                  alt="Card background"
-                  className="object-cover rounded-xl"
-                  src="/math-webapp.png"
-                  width="100%"
-                />
-              </CardBody>
-            </Card>
-            <Card className="py-4">
-              <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-                <h4 className="font-bold text-large">Math Mastery Web App</h4>
-                <small className="text-default-500">
-                  Next.js, React.js, MongoDB
-                </small>
-              </CardHeader>
-              <CardBody className="overflow-visible py-2">
-                <Image
-                  alt="Card background"
-                  className="object-cover rounded-xl"
-                  src="/math-webapp.png"
-                  width="100%"
-                />
-              </CardBody>
-            </Card> */}
           </div>
         </div>
         <div className="my-32">
@@ -216,70 +175,6 @@ function Root() {
                 </Card>
               </RouterLink>
             ))}
-            {/* <Card className="py-4">
-              <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-                <h4 className="font-bold text-large">Math Mastery Web App</h4>
-                <small className="text-default-500">
-                  Next.js, React.js, MongoDB
-                </small>
-              </CardHeader>
-              <CardBody className="overflow-visible py-2">
-                <Image
-                  alt="Card background"
-                  className="object-cover rounded-xl"
-                  src="/math-webapp.png"
-                  width="100%"
-                />
-              </CardBody>
-            </Card>
-            <Card className="py-4">
-              <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-                <h4 className="font-bold text-large">Math Mastery Web App</h4>
-                <small className="text-default-500">
-                  Next.js, React.js, MongoDB
-                </small>
-              </CardHeader>
-              <CardBody className="overflow-visible py-2">
-                <Image
-                  alt="Card background"
-                  className="object-cover rounded-xl"
-                  src="/math-webapp.png"
-                  width="100%"
-                />
-              </CardBody>
-            </Card>
-            <Card className="py-4">
-              <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-                <h4 className="font-bold text-large">Math Mastery Web App</h4>
-                <small className="text-default-500">
-                  Next.js, React.js, MongoDB
-                </small>
-              </CardHeader>
-              <CardBody className="overflow-visible py-2">
-                <Image
-                  alt="Card background"
-                  className="object-cover rounded-xl"
-                  src="/math-webapp.png"
-                  width="100%"
-                />
-              </CardBody>
-            </Card>
-            <Card className="py-4">
-              <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-                <h4 className="font-bold text-large">Math Mastery Web App</h4>
-                <small className="text-default-500">
-                  Next.js, React.js, MongoDB
-                </small>
-              </CardHeader>
-              <CardBody className="overflow-visible py-2">
-                <Image
-                  alt="Card background"
-                  className="object-cover rounded-xl"
-                  src="/math-webapp.png"
-                  width="100%"
-                />
-              </CardBody>
-            </Card> */}
           </div>
         </div>
       </div>

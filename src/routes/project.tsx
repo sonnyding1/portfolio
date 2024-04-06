@@ -45,9 +45,11 @@ export default function Project() {
             h3: ({ node, ...props }) => (
               <h3 className="text-xl font-semibold py-4" {...props} />
             ),
-            ul: ({ node, ...props }) => <ul className="list-disc" {...props} />,
+            ul: ({ node, ...props }) => (
+              <ul className="list-disc px-4" {...props} />
+            ),
             ol: ({ node, ...props }) => (
-              <ol className="list-decimal" {...props} />
+              <ol className="list-decimal px-4" {...props} />
             ),
             li: ({ node, ...props }) => <li className="py-0" {...props} />,
             img: ({ node, ...props }) => <img className="rounded" {...props} />,

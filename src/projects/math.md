@@ -6,11 +6,16 @@ featured: true
 og: https://na-406607901.imgix.net/math-webapp/math-webapp.png
 date: 2023-11-01
 ---
+Link to the project so you could try yourself: [https://basic-math-livid.vercel.app/](https://basic-math-livid.vercel.app/)
+
 My interactive math web app has the following features:
 
-- Generates math exercises (addition, multiplication, factorization) with difficulty selectors
-- Experience and level system
-- Account system so users can retain their levels
+*   Generates math exercises (addition, multiplication, factorization) with difficulty selectors
+    
+*   Experience and level system
+    
+*   Account system so users can retain their levels
+    
 
 ## Tech Stack
 

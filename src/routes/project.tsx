@@ -35,6 +35,7 @@ export default function Project() {
         <Markdown
           components={{
             p: ({ node, ...props }) => <p className="py-4" {...props} />,
+            a: ({ node, ...props }) => <a className="underline" {...props} />,
             h1: ({ node, ...props }) => (
               <h1 className="text-3xl font-bold py-8" {...props} />
             ),

@@ -8,11 +8,11 @@ date: 2023-11-01
 ---
 My interactive math web app has the following features:
 
-*   Generates math exercises (addition, multiplication, factorization) with difficulty selectors
+- Generates math exercises (addition, multiplication, factorization) with difficulty selectors
     
-*   Experience and level system
+- Experience and level system
     
-*   Account system so users can retain their levels
+- Account system so users can retain their levels
     
 
 ## Tech Stack

@@ -46,10 +46,10 @@ export default function Project() {
               <h3 className="text-xl font-semibold py-4" {...props} />
             ),
             ul: ({ node, ...props }) => (
-              <ul className="list-disc list-inside" {...props} />
+              <ul className="list-disc list-inside pl-5" {...props} />
             ),
             ol: ({ node, ...props }) => (
-              <ol className="list-decimal list-inside" {...props} />
+              <ol className="list-decimal list-inside pl-5" {...props} />
             ),
             li: ({ node, ...props }) => <li className="py-1" {...props} />,
             img: ({ node, ...props }) => <img className="rounded" {...props} />,

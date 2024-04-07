@@ -1,13 +1,7 @@
-import {
-  OrbitControls,
-  OrthographicCamera,
-  useAnimations,
-  useGLTF,
-} from "@react-three/drei";
+import { OrbitControls, useAnimations } from "@react-three/drei";
 import { useFrame, useLoader, useThree } from "@react-three/fiber";
-import { is } from "@react-three/fiber/dist/declarations/src/core/utils";
 import { useEffect, useState } from "react";
-import { MathUtils, Vector2, Vector3 } from "three";
+import { Vector3 } from "three";
 import { GLTFLoader } from "three/examples/jsm/Addons.js";
 
 export default function Fox() {
@@ -20,16 +14,6 @@ export default function Fox() {
   const [foxDestination, setFoxDestination] = useState(new Vector3());
   const [isFoxMoving, setIsFoxMoving] = useState(false);
 
-  //   useEffect(() => {
-  //     actions?.Survey?.play();
-  //     window.addEventListener("mousemove", (event) => {
-  //       const x = ((event.clientX / window.innerWidth) * 2 - 1) * 0.3;
-
-  //       const y = (-(event.clientY / window.innerHeight) * 2 + 1) * 0.3;
-
-  //       setFoxPosition(new Vector3(x, y, 0));
-  //     });
-  //   }, [actions]);
   useEffect(() => {
     actions?.Survey?.play();
   });
@@ -79,7 +63,7 @@ export default function Fox() {
     };
   }, [camera]);
 
-  useFrame((state, delta) => {
+  useFrame((_state, delta) => {
     if (foxPosition.distanceTo(foxDestination) > 0.01) {
       const direction = foxDestination.clone().sub(foxPosition).normalize();
       const newFoxPosition = foxPosition
@@ -97,7 +81,6 @@ export default function Fox() {
       }
 
       const angleInRadians = Math.atan2(direction.x, -direction.y);
-      const angleInDegrees = MathUtils.radToDeg(angleInRadians);
       setFoxXRotation(angleInRadians);
     } else {
       // animation

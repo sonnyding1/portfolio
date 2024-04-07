@@ -17,7 +17,7 @@ import {
   getFeaturedProjects,
   getNonFeaturedProjects,
 } from "../scripts/projects";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas } from "@react-three/fiber";
 import Fox from "../Fox";
 
 function Root() {
@@ -64,8 +64,12 @@ function Root() {
   return (
     <>
       <div className="fixed top-0 left-0 w-screen h-screen -z-10">
-        <Canvas>
+        <Canvas camera={{ position: [0, 0, 2], fov: 15 }}>
           <Fox />
+          {/* <mesh>
+            <boxGeometry args={[1, 1, 1]} />
+            <meshBasicMaterial color="red" />
+          </mesh> */}
         </Canvas>
       </div>
       <Navbar onMenuOpenChange={setIsMenuOpen} id="navbar">

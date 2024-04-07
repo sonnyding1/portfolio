@@ -13,6 +13,8 @@ export default function Fox() {
   const [foxXRotation, setFoxXRotation] = useState(0);
   const [foxDestination, setFoxDestination] = useState(new Vector3());
   const [isFoxMoving, setIsFoxMoving] = useState(false);
+  const [isFoxRunning, setIsFoxRunning] = useState(false);
+  const [foxSpeed, setFoxSpeed] = useState(0.1);
 
   useEffect(() => {
     actions?.Survey?.play();
@@ -64,19 +66,34 @@ export default function Fox() {
   }, [camera]);
 
   useFrame((_state, delta) => {
-    if (foxPosition.distanceTo(foxDestination) > 0.01) {
+    const distance = foxPosition.distanceTo(foxDestination);
+    console.log(distance);
+    if (distance > 0.01) {
       const direction = foxDestination.clone().sub(foxPosition).normalize();
       const newFoxPosition = foxPosition
         .clone()
-        .add(direction.multiplyScalar(0.1 * delta));
+        .add(direction.multiplyScalar(foxSpeed * delta));
       setFoxPosition(newFoxPosition);
 
       // animation
-      if (!isFoxMoving && foxPosition.distanceTo(foxDestination) > 0.02) {
+      if (!isFoxRunning && distance > 0.15) {
+        setIsFoxRunning(true);
+        setFoxSpeed(0.15);
+        if (actions?.Survey && actions?.Walk && actions?.Run) {
+          actions.Walk.fadeOut(0.2).stop();
+          actions.Survey.fadeOut(0.2).stop();
+          // actions.Walk.fadeIn(0.2).play();
+          actions.Run.setEffectiveTimeScale(2);
+          actions.Run.fadeIn(0.2).play();
+        }
+      }
+      if (!isFoxMoving && distance > 0.02) {
         setIsFoxMoving(true);
-        if (actions?.Survey && actions?.Walk) {
+        setFoxSpeed(0.07);
+        if (actions?.Survey && actions?.Walk && actions?.Run) {
           actions.Survey.fadeOut(0.2).stop();
           actions.Walk.fadeIn(0.2).play();
+          // actions.Run.fadeIn(0.2).play();
         }
       }
 
@@ -86,8 +103,10 @@ export default function Fox() {
       // animation
       if (isFoxMoving) {
         setIsFoxMoving(false);
-        if (actions?.Survey && actions?.Walk) {
+        setIsFoxRunning(false);
+        if (actions?.Survey && actions?.Walk && actions?.Run) {
           actions.Walk.fadeOut(0.2).stop();
+          actions.Run.fadeOut(0.2).stop();
           actions.Survey.fadeIn(0.2).play();
         }
       }

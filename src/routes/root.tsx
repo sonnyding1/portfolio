@@ -64,7 +64,7 @@ function Root() {
   return (
     <>
       <div className="fixed top-0 left-0 w-screen h-screen -z-10">
-        <Canvas camera={{ position: [0, 0, 2], fov: 15 }}>
+        <Canvas camera={{ position: [0, 0, 20], fov: 1 }}>
           <Fox />
           {/* <mesh>
             <boxGeometry args={[1, 1, 1]} />

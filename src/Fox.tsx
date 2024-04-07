@@ -5,16 +5,20 @@ import {
   useGLTF,
 } from "@react-three/drei";
 import { useFrame, useLoader, useThree } from "@react-three/fiber";
+import { is } from "@react-three/fiber/dist/declarations/src/core/utils";
 import { useEffect, useState } from "react";
-import { Vector2, Vector3 } from "three";
+import { MathUtils, Vector2, Vector3 } from "three";
 import { GLTFLoader } from "three/examples/jsm/Addons.js";
 
 export default function Fox() {
   const gltf = useLoader(GLTFLoader, "/fox_gltf/Fox.gltf");
   const { actions } = useAnimations(gltf.animations, gltf.scene);
+  const { camera } = useThree();
 
   const [foxPosition, setFoxPosition] = useState(new Vector3(0, 0, 0));
+  const [foxXRotation, setFoxXRotation] = useState(0);
   const [foxDestination, setFoxDestination] = useState(new Vector3());
+  const [isFoxMoving, setIsFoxMoving] = useState(false);
 
   //   useEffect(() => {
   //     actions?.Survey?.play();
@@ -30,22 +34,80 @@ export default function Fox() {
     actions?.Survey?.play();
   });
 
-  window.addEventListener("mousemove", (event) => {
-    const x = (event.clientX / window.innerWidth - 0.5) * 0.6;
-    const y = -(event.clientY / window.innerHeight - 0.5) * 0.4;
-    setFoxDestination(new Vector3(x, y, 0));
-    // console.log(foxDestination);
-  });
+  useEffect(() => {
+    const handleMouseMove = (event: { clientX: number; clientY: number }) => {
+      var vec = new Vector3();
+      var pos = new Vector3();
+      vec.set(
+        (event.clientX / window.innerWidth) * 2 - 1,
+        -(event.clientY / window.innerHeight) * 2 + 1,
+        0.5
+      );
+      vec.unproject(camera);
+      vec.sub(camera.position).normalize();
+      var distance = -camera.position.z / vec.z;
+      pos.copy(camera.position).add(vec.multiplyScalar(distance));
+
+      setFoxDestination(pos);
+    };
+
+    const handleTouchMove = (event: TouchEvent) => {
+      var vec = new Vector3();
+      var pos = new Vector3();
+      vec.set(
+        (event.touches[0].clientX / window.innerWidth) * 2 - 1,
+        -(event.touches[0].clientY / window.innerHeight) * 2 + 1,
+        0.5
+      );
+      vec.unproject(camera);
+      vec.sub(camera.position).normalize();
+      var distance = -camera.position.z / vec.z;
+      pos.copy(camera.position).add(vec.multiplyScalar(distance));
+
+      setFoxDestination(pos);
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("touchstart", handleTouchMove);
+    window.addEventListener("touchmove", handleTouchMove);
+
+    // Remove the event listener when the component is unmounted
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("touchstart", handleTouchMove);
+      window.removeEventListener("touchmove", handleTouchMove);
+    };
+  }, [camera]);
 
   useFrame((state, delta) => {
-    // console.log(foxPosition.distanceTo(foxDestination));
-    if (foxPosition.distanceTo(foxDestination) > 0.001) {
+    if (foxPosition.distanceTo(foxDestination) > 0.01) {
       const direction = foxDestination.clone().sub(foxPosition).normalize();
       const newFoxPosition = foxPosition
         .clone()
         .add(direction.multiplyScalar(0.1 * delta));
       setFoxPosition(newFoxPosition);
-      console.log(foxPosition);
+
+      // animation
+      if (!isFoxMoving && foxPosition.distanceTo(foxDestination) > 0.02) {
+        setIsFoxMoving(true);
+        if (actions?.Survey && actions?.Walk) {
+          actions.Survey.fadeOut(0.2).stop();
+          actions.Walk.fadeIn(0.2).play();
+        }
+      }
+
+      const angleInRadians = Math.atan2(direction.x, -direction.y);
+      const angleInDegrees = MathUtils.radToDeg(angleInRadians);
+      setFoxXRotation(angleInRadians);
+    } else {
+      // animation
+      if (isFoxMoving) {
+        setIsFoxMoving(false);
+        if (actions?.Survey && actions?.Walk) {
+          actions.Walk.fadeOut(0.2).stop();
+          actions.Survey.fadeIn(0.2).play();
+        }
+      }
     }
   });
 
@@ -58,6 +120,7 @@ export default function Fox() {
         scale={0.0003}
         position={foxPosition}
         rotation-x={Math.PI * 0.2}
+        rotation-y={foxXRotation}
       />
       <OrbitControls />
     </>

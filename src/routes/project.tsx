@@ -52,7 +52,9 @@ export default function Project() {
               <ol className="list-decimal px-4" {...props} />
             ),
             li: ({ node, ...props }) => <li className="py-0" {...props} />,
-            img: ({ node, ...props }) => <img className="rounded" {...props} />,
+            img: ({ node, ...props }) => (
+              <img className="rounded-lg m-2" {...props} />
+            ),
             code(props) {
               const { children, className, node, ...rest } = props;
               const match = /language-(\w+)/.exec(className || "");

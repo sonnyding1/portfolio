@@ -1,5 +1,5 @@
 ---
-title: ChatGPT cli
+title: ChatGPT CLI
 technologies: Python
 id: chatgpt-cli
 featured: false

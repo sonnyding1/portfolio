@@ -23,6 +23,26 @@ The Egg Editor has the following features:
 
 ## Structure
 
+The project is a monorepo, with a frontend folder and a backend folder. For the backend, I set up Express as the framework, and we decided to write RESTful API. The bulk of the backend work is populating CRUD operations with our database, in this case, MongoDB. The database contains several collections: users, files, comments. Users collection contains information about registered users. Although we have 2 methods of registering, either through email and password or through Google, each user's info is still stored in the same collection for the sake of brevity.
+
+The frontend uses React and React-Router for creating a multi-page application. Our web app has some pages relating to the "community" aspect of the project, such as community page, profile page. Other pages are related to the "editor" aspect, they are browse page and edit page. The edit page's Markdown rendering is made possible by React Markdown.
+
+I have also set up some GitHub actions that looks for any project breaking code and linting problems. I also experimented with Swagger as the backend documentation, but later we scratched that idea due to time constraint. I do believe Swagger can be a good documentation tool though.
+
+## Auth Pain
+
+I thought log in with Google would be a nice thing to have, so I went on to integrate it into our project. Thanks to Passport.js, it was not too much of a pain, but it was still confusing. Basically, with Passport.js, OAuth 2.0 with Google becomes the following steps:
+
+1. Set up Google authentication strategy on GCP
+2. Redirect user to an endpoint handled by Passport, which prompts "log in with Google"
+3. After login, user gets redirected to a callback route with their user information
+4. Store the information somewhere, in session or database or somewhere else
+5. Redirect to home page
+
+## Undo Redo is Kind of Hard
+
+
+
 ## Demo
 
 ![](https://na-406607901.imgix.net/egg-editor/demo-1.png)

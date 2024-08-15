@@ -18,48 +18,10 @@ import {
 import { Canvas } from "@react-three/fiber";
 import Fox from "../Fox";
 import { Badge } from "@/components/ui/badge";
-import Navbar from "@/components/Navbar";
 
-function Root() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [navbarHeight, setNavbarHeight] = useState(0);
-  const [activeSection, setActiveSection] = useState("");
-
+function Home() {
   const featuredProjects = getFeaturedProjects();
   const nonFeaturedProjects = getNonFeaturedProjects();
-
-  useEffect(() => {
-    const navbarElement = document.getElementById("navbar");
-    if (navbarElement) {
-      setNavbarHeight(navbarElement.offsetHeight);
-    }
-  }, []);
-
-  const menuItems = ["Home", "Tags"];
-
-  useEffect(() => {
-    const handleScroll = () => {
-      let currentSection = "";
-      const offsets = menuItems.map((item) => {
-        const element = document.getElementById(item.toLowerCase());
-        return element ? element.offsetTop : 0;
-      });
-
-      offsets.forEach((offset, index) => {
-        if (window.scrollY >= offset - 200) {
-          currentSection = menuItems[index];
-        }
-      });
-
-      setActiveSection(currentSection);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   return (
     <>
@@ -159,4 +121,4 @@ function Root() {
   );
 }
 
-export default Root;
+export default Home;

@@ -1,15 +1,4 @@
-import { useEffect, useState } from "react";
-import {
-  NavbarBrand,
-  NavbarContent,
-  NavbarItem,
-  NavbarMenuToggle,
-  NavbarMenu,
-  Card,
-  CardHeader,
-  CardBody,
-  Image,
-} from "@nextui-org/react";
+import { Image } from "@nextui-org/react";
 import { Link } from "react-router-dom";
 import {
   getFeaturedProjects,

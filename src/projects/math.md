@@ -1,21 +1,22 @@
 ---
 title: Interative Math Web App
-technologies: Next.js, React.js, MongoDB
+technologies:
+  - Next
+  - React
+  - MongoDB
 id: interactive-math-web-app
 featured: true
 og: https://na-406607901.imgix.net/math-webapp/math-webapp.png
 date: 2023-11-01
 ---
+
 Link to the project so you could try yourself: [https://basic-math-livid.vercel.app/](https://basic-math-livid.vercel.app/)
 
 My interactive math web app has the following features:
 
-*   Generates math exercises (addition, multiplication, factorization) with difficulty selectors
-    
-*   Experience and level system
-    
-*   Account system so users can retain their levels
-    
+- Generates math exercises (addition, multiplication, factorization) with difficulty selectors
+- Experience and level system
+- Account system so users can retain their levels
 
 ## Tech Stack
 
@@ -35,7 +36,11 @@ I used MathJax for rendering math equations into LaTeX forms. Specifically, I in
 
 ```tsx
 <head>
-  <Script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" />
+  <Script
+    id="MathJax-script"
+    async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+  />
 </head>
 ```
 
@@ -50,20 +55,20 @@ const typeset = (selector: () => HTMLElement) => {
   const mathJax = (window as any).MathJax;
   // If MathJax script hasn't been loaded yet, then do nothing.
   if (!mathJax) {
-      return null;
+    return null;
   }
   mathJax.startup.promise = mathJax.startup.promise
-      .then(() => {
+    .then(() => {
       selector();
       return mathJax.typesetPromise();
-      })
-      .catch((err: any) => console.error(`Typeset failed: ${err.message}`));
+    })
+    .catch((err: any) => console.error(`Typeset failed: ${err.message}`));
   return mathJax.startup.promise;
 };
 
 const ref = React.createRef<HTMLSpanElement>();
 useEffect(() => {
-    typeset(() => ref.current!);
+  typeset(() => ref.current!);
 }, [problem, answer]);
 ```
 
@@ -71,8 +76,8 @@ But it was not successful. Then, I tried searching for existing packages that wo
 
 ```tsx
 <math-field
-  id='answer'
-  onInput={(e: React.ChangeEvent<HTMLInputElement> ) => {
+  id="answer"
+  onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
     setUserAnswer(e.target.value);
   }}
 >

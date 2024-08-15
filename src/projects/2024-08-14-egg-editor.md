@@ -1,11 +1,15 @@
 ---
 title: Egg Editor
-technologies: Express, React, MongoDB
+technologies:
+  - Express
+  - React
+  - MongoDB
 id: egg-editor
 featured: true
 og: https://na-406607901.imgix.net/egg-editor/egg-editor.png
 date: 2024-08-14
 ---
+
 This project is a group project made for one of my university classes, here is the Github repo: [https://github.com/sonnyding1/CS35L-Egg](https://github.com/sonnyding1/CS35L-Egg)
 
 The Egg Editor has the following features:
@@ -14,7 +18,6 @@ The Egg Editor has the following features:
 - **Edit page**: Users can edit markdown files with LaTeX support. There is also a menu bar at the top of the page, which contains many useful features and shortcut keys, such as undo/redo, bold, italics, math...
 - **File management**: Users can create new files, browse existing files, delete files, and search file content. Users can also toggle file visibility between public and private.
 - **Community interaction**: Users can like and comment on other users' files. They can also view the specifics of each file.
-
 
 ## Tech Stack
 

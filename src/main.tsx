@@ -9,6 +9,7 @@ import Project, { loader as projectLoader } from "./routes/project.tsx";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import mixpanel from "mixpanel-browser";
+import Layout from "./components/Layout.tsx";
 
 mixpanel.init("e009bb1b3f206a98da6a7784a5495e76", {
   track_pageview: true,
@@ -16,17 +17,36 @@ mixpanel.init("e009bb1b3f206a98da6a7784a5495e76", {
   persistence: "localStorage",
 });
 
+// const router = createBrowserRouter([
+//   {
+//     path: "/",
+//     element: <Root />,
+//     errorElement: <ErrorPage />,
+//   },
+//   {
+//     path: "projects/:projectId",
+//     element: <Project />,
+//     loader: projectLoader,
+//     errorElement: <ErrorPage />,
+//   },
+// ]);
+
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
+    element: <Layout />, // Use the Layout component
     errorElement: <ErrorPage />,
-  },
-  {
-    path: "projects/:projectId",
-    element: <Project />,
-    loader: projectLoader,
-    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/",
+        element: <Root />,
+      },
+      {
+        path: "projects/:projectId",
+        element: <Project />,
+        loader: projectLoader,
+      },
+    ],
   },
 ]);
 

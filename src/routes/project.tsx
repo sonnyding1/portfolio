@@ -30,12 +30,12 @@ export default function Project() {
   return (
     <div>
       <div className="max-w-5xl mx-auto p-8">
-        <div
+        <span
           onClick={() => navigate(-1)}
-          className="transition duration-300 ease-in-out transform hover:text-blue-500 hover:underline"
+          className="transition duration-300 ease-in-out transform hover:text-blue-500 hover:underline cursor-pointer"
         >
           &laquo; Go Back
-        </div>
+        </span>
         <h1 className="font-bold text-5xl py-8 ">{project.title}</h1>
         <Markdown
           components={{

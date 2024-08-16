@@ -13,10 +13,16 @@ function Navbar() {
           <p className="font-bold text-inherit">Sonny's portfolio</p>
         </div>
         <div className="hidden md:block">
-          <Link to="/" className="p-4">
+          <Link
+            to="/"
+            className="p-4 transition duration-300 ease-in-out transform hover:text-blue-500 hover:underline"
+          >
             Home
           </Link>
-          <Link to="/tags" className="p-4">
+          <Link
+            to="/tags"
+            className="p-4 transition duration-300 ease-in-out transform hover:text-blue-500 hover:underline"
+          >
             Tags
           </Link>
         </div>

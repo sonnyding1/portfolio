@@ -14,8 +14,12 @@ function Tags() {
         <div className="flex flex-wrap gap-2">
           {tags.map(([tag, count]) => (
             <Link key={tag} to={`/tags/${tag}`}>
-              <Badge key={tag} variant="secondary" className="text-md px-4">
-                #{tag}: {count}
+              <Badge
+                key={tag}
+                variant="secondary"
+                className="text-md px-4 text-gray-400 transition duration-500 ease-in-out hover:scale-105 cursor-pointer active:bg-gray-200"
+              >
+                #<span className="text-black">{tag}</span>: {count}
               </Badge>
             </Link>
           ))}

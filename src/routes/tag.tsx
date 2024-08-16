@@ -16,7 +16,7 @@ function Tag() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {projectsWithTag.map((project) => (
             <Link to={`/projects/${project.id}`} key={project.id}>
-              <div className="py-4 transform transition duration-500 ease-in-out hover:scale-105 cursor-pointer border shadow-lg rounded-lg bg-slate-100 bg-opacity-50 backdrop-blur">
+              <div className="py-4 transform transition duration-500 ease-in-out hover:scale-105 cursor-pointer border shadow-lg rounded-lg bg-slate-100 active:bg-slate-200 bg-opacity-50 backdrop-blur">
                 <div className="pb-0 pt-2 px-4 flex-col items-start">
                   <h4 className="font-bold text-large mb-2">{project.title}</h4>
                   <small className="text-default-500">

@@ -1,6 +1,9 @@
-import { LoaderFunctionArgs, useLoaderData } from "react-router-dom";
+import {
+  LoaderFunctionArgs,
+  useLoaderData,
+  useNavigate,
+} from "react-router-dom";
 import { getProjectById } from "../scripts/projects";
-import { Link, Navbar, NavbarContent } from "@nextui-org/react";
 import Markdown from "react-markdown";
 import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight";
 import { dracula } from "react-syntax-highlighter/dist/esm/styles/hljs";
@@ -22,15 +25,17 @@ export default function Project() {
     title: string;
     body: string;
   };
+  const navigate = useNavigate();
 
   return (
     <div>
-      <Navbar id="navbar" position="static">
-        <NavbarContent className="gap-4" justify="center">
-          <Link href="/">Back</Link>
-        </NavbarContent>
-      </Navbar>
       <div className="max-w-5xl mx-auto p-8">
+        <div
+          onClick={() => navigate(-1)}
+          className="transition duration-300 ease-in-out transform hover:text-blue-500 hover:underline"
+        >
+          &laquo; Go Back
+        </div>
         <h1 className="font-bold text-5xl py-8 ">{project.title}</h1>
         <Markdown
           components={{

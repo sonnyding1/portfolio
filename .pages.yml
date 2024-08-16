@@ -11,7 +11,7 @@ content:
       sort: [date]
     fields:
       - { name: title, label: Title, type: string }
-      - { name: technologies, label: Technologies, type: string }
+      - { name: technologies, label: Technologies, type: string, list: true }
       - { name: id, label: ID, type: string }
       - { name: featured, label: Featured, type: boolean }
       - { name: og, label: OG Image, type: string }

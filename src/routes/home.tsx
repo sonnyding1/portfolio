@@ -7,6 +7,7 @@ import {
 import { Canvas } from "@react-three/fiber";
 import Fox from "../Fox";
 import { Badge } from "@/components/ui/badge";
+import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
 function Home() {
   const featuredProjects = getFeaturedProjects();
@@ -26,14 +27,37 @@ function Home() {
 
       <div className="max-w-5xl mx-auto p-8">
         <div className="my-32">
-          <p className="font-bold text-5xl py-8" id="about">
-            About
+          <p className="font-bold text-5xl" id="about">
+            Hi, I'm <span className="text-amber-300">Sonny</span>.
           </p>
-          <p className="text-xl pt-16">
-            Hi there, my name is <span className="font-bold">Sonny Ding</span>,
-            I am enthusiastic about software development. I am currently a 3rd
-            year student at UCLA, welcome to my portfolio!
+          <p className="flex items-center text-lg pt-2 text-slate-600">
+            📍 Los Angeles, California, United States
           </p>
+          <div className="flex space-x-2 pt-2">
+            <a
+              href="https://github.com/sonnyding1"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-800 text-white hover:bg-gray-700 transition duration-300"
+            >
+              <FaGithub size={20} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/sonny-ding/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-8 h-8 flex items-center justify-center rounded-full bg-blue-600 text-white hover:bg-blue-500 transition duration-300"
+            >
+              <FaLinkedin size={16} />
+            </a>
+            <a
+              href="mailto:sonnnyding20@gmail.com"
+              className="w-8 h-8 flex items-center justify-center rounded-full bg-red-600 text-white hover:bg-red-500 transition duration-300"
+            >
+              <FaEnvelope size={16} />
+            </a>
+          </div>
+          <p className="text-xl pt-16"></p>
         </div>
         <div className="my-32">
           <p className="font-bold text-5xl py-8" id="featured">

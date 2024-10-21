@@ -10,7 +10,7 @@ function Navbar() {
     <div className="bg-white bg-opacity-50 backdrop-blur">
       <div className="flex justify-between items-center border-b border-gray-300 py-8 mx-8">
         <div>
-          <p className="font-bold text-inherit">Sonny's portfolio</p>
+          <p className="font-bold text-inherit">Sonny Ding</p>
         </div>
         <div className="hidden md:block">
           <Link

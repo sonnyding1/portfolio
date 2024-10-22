@@ -30,7 +30,7 @@ function Home() {
           <p className="font-bold text-5xl" id="about">
             Hi, I'm <span className="text-amber-300">Sonny</span>.
           </p>
-          <p className="flex items-center text-lg pt-2 text-slate-600">
+          <p className="flex items-center text-lg pt-2 text-slate-600 font-light">
             📍 Los Angeles, California, United States
           </p>
           <div className="flex space-x-2 pt-2">
@@ -56,6 +56,35 @@ function Home() {
             >
               <FaEnvelope size={16} />
             </a>
+          </div>
+          <div className="mt-8 ml-2 relative">
+            <div className="absolute left-0 top-2 bottom-8 transform -translate-x-1/2 border-l-2 border-gray-300"></div>
+            <div className="mb-8 flex items-center w-full">
+              <div className="relative pl-8">
+                <div className="absolute left-0 transform -translate-x-1/2 bg-gray-300 rounded-full h-4 w-4"></div>
+                <div>
+                  <p className="italic leading-none text-slate-600">
+                    June 2024 - Present
+                  </p>
+                  <p className="font-light">
+                    Fullstack Developer Intern at UCLA Trustworthy AI Lab
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="mb-8 flex items-center w-full">
+              <div className="relative pl-8">
+                <div className="absolute left-0 transform -translate-x-1/2 bg-gray-300 rounded-full h-4 w-4"></div>
+                <div>
+                  <p className="italic leading-none text-slate-600">
+                    February 2024 - June 2024
+                  </p>
+                  <p className="font-light">
+                    Software Engineer Intern at New EIC
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
           <p className="text-xl pt-16"></p>
         </div>
